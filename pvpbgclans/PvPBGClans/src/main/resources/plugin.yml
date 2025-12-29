@@ -1,0 +1,12 @@
+name: PvPBGClans
+version: '${project.version}'
+main: mc.pvpbulgaria.pvpbgclans.PvPBGClans
+author: Mentalkata, Ludakis
+
+softdepend: ["PlaceholderAPI"]
+
+commands:
+  clan:
+    usage: /clan
+    aliases: [clans]
+

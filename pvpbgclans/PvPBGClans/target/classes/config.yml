@@ -1,0 +1,151 @@
+clan:
+  summon:
+    # Configure summon cooldown in minutes (only). Default: 120 (2 hours).
+    cooldown-minutes: 120    # cooldown for /clan summon in minutes
+    cost-trophies: 5         # trophies removed from the summoner
+    warmup-seconds: 5
+  max-members: 3
+  name-min: 3
+  name-max: 6
+  disband-confirm-seconds: 10
+  allowed-regex: "^[a-zA-Z0-9_]+$"
+  top-size: 10 # how many clans to be displayed in the /clan top command
+  base-warmup-seconds: 5
+  join-cooldown-hours: 2
+  levels:
+    # index 1.N (max 10). value = trophies required to reach that level
+    # Example: level 1 at 0 trophies, level 2 at 10 trophies, etc.
+    thresholds:
+      - 0
+      - 10
+      - 25
+      - 50
+      - 90
+      - 140
+      - 200
+      - 275
+      - 365
+      - 470
+    # Per-level prefix templates. Index 0 = level 1, index 9 = level 10.
+    # Use %clan% inside the template to inject the clan name.
+    prefixes:
+      - "&8[&b%clan%&8] &7"    # level 1
+      - "&8[&6%clan%&8] &7"    # level 2
+      - "&8[&a%clan%&8] &7"    # level 3
+      - "&8[&e%clan%&8] &7"    # level 4
+      - "&8[&c%clan%&8] &7"    # level 5
+      - "&8[&d%clan%&8] &7"    # level 6
+      - "&8[&9%clan%&8] &7"    # level 7
+      - "&8[&5%clan%&8] &7"    # level 8
+      - "&8[&3%clan%&8] &7"    # level 9
+      - "&l&c[%clan%] &7"     # level 10 (bold red [Clan Name])
+    commands:
+      summon-required-level: 2
+      setbase-required-level: 3
+
+messages:
+  prefix: "&8[&bClans&8] &7"
+  no-permission: "&cYou don't have permission."
+  players-only: "&cThis command is only for players."
+  unknown-subcommand: "&cUnknown subcommand. Use &e/clan help&c."
+  reloaded: "&aConfig reloaded."
+
+  must-be-in-clan: "&cYou must be in a clan."
+  already-in-clan: "&cYou are already in a clan."
+  clan-exists: "&cA clan with that name already exists."
+  invalid-name: "&cInvalid clan name."
+  created: "&aClan &e%clan% &acreated!"
+  disbanded: "&cClan disbanded."
+  disband-confirm: "&cType &e/clan disband confirm &cwithin &e%seconds%&c seconds to disband your clan."
+  disband-expired: "&cDisband confirmation expired. Run &e/clan disband&c again."
+  disband-cancelled: "&aDisband cancelled."
+
+  not-leader: "&cOnly the clan leader can do this."
+  max-members: "&cClan is full (max: &e%max%&c)."
+  not-member: "&cThat player is not in your clan."
+  transfer-success: "&aLeadership transferred to &e%player%&a."
+
+  invite-sent: "&aInvited &e%player% &ato join &e%clan%&a."
+  invite-received: "&e%inviter% &ahas invited you to join clan &e%clan%&a. Type &e/clan join %clan% &awithin &e%seconds%&a seconds."
+  invite-expired: "&cYour clan invitation has expired."
+  already-invited: "&cThat player already has a pending invite."
+  clan-full: "&cClan is full (max: &e%max%&c)."
+  join-cooldown-leader: "&cPlayer is on clan join cooldown. Time left: &f%time%"
+  join-cooldown-player: "&cYou cannot join a clan yet. Time left: &f%time%"
+
+  joined: "&aYou joined clan &e%clan%&a."
+  join-no-invite: "&cYou don't have an invite to that clan."
+  left: "&eYou left the clan."
+  leader-cant-leave: "&cThe leader can't leave. Use &e/clan transfer <player> &cor &e/clan disband&c."
+  not-online: "&cThat player is not online."
+  cant-invite-self: "&cYou can't invite yourself."
+
+  kick-usage: "&cUsage: /clan kick <player>"
+  kick-self: "&cYou can't kick yourself."
+  cannot-kick-leader: "&cYou can't kick the leader."
+  kick-success: "&aKicked &e%player% &afrom the clan."
+  kicked: "&cYou were kicked from clan &e%clan%&c by &e%by%&c."
+
+  list-header: "&8&m------------------------"
+  list-title: "&bClan: &f%clan%"
+  list-leader: "&bLeader: &f%leader%"
+  list-members: "&bMembers (&f%count%&7/&f%max%&b): &f%members%"
+  list-footer: "&8&m------------------------"
+
+  # clan chat
+  clan-chat-on: "&aClan chat enabled."
+  clan-chat-off: "&cClan chat disabled."
+  # Updated to desired format. %clan% will be replaced by the clan name or (after code changes) by the level-based prefix template.
+  clan-chat-format: "&e<&7Ninja&e> %clan%&f%player%: %message%"
+
+  # clan stats
+  stats-header: "&8&m------------------------"
+  stats-title: "&bClan Stats: &f%clan%"
+  stats-line: "&b%player%&7: &f%kills% &7kills"
+  stats-online: "&bOnline: &f%online%&7/&f%total%"
+  stats-footer: "&8&m------------------------"
+  stats-trophies: "&bTotal trophies: &f%trophies%"
+  stats-level: "&bLevel: &f%level%&7/&f%maxlevel%"
+  stats-next: "&bNext level: &f%next% &7trophies"
+  stats-max: "&bNext level: &aMAX"
+  stats-rank: "&bRank: &f#%rank%"
+
+  #clan ranking
+  top-header: "&8&m------------------------"
+  top-title: "&bTop Clans (&f%count%&b)"
+  top-line: "&7#%pos% &b%clan% &7- &f%trophies% &7trophies &8(&fLvl %level%&8)"
+  top-footer: "&8&m------------------------"
+
+  #clan base
+  base-not-set: "&cYour clan base is not set."
+  base-set: "&aClan base set!"
+  base-warmup: "&eTeleporting to clan base in &f%seconds%&e... Don't move!"
+  base-teleported: "&aTeleported to clan base."
+  base-cancelled-move: "&cTeleport cancelled because you moved."
+  base-already-teleporting: "&cYou are already teleporting."
+  setbase-leader-only: "&cOnly the clan leader can set the base."
+  setbase-required-level: "&cYou need clan level %level% to set the base."
+  base-removed: "&aClan base removed!"
+  removebase-leader-only: "&cOnly the clan leader can remove the base."
+
+  # clan summon
+  summon-required-level: "&cYou need clan level %level% to use /clan summon."
+  summon-request-sent: "&aClan summon request sent to online members."
+  summon-received: "&aYou have received a clan summon from &e%sender%&a. Type &e/clan tpyes &ato accept or &c/clan tpno &ato deny."
+  summon-teleported: "&aTeleported to summon portal."
+  summon-warmup: "&eTeleporting to summon portal in &f%seconds%&e... Don't move!"
+  # summon extras
+  summon-cooldown: "&cClan summon is on cooldown. Time left: &f%time%&c."
+  summon-no-trophies: "&cYou need &f%cost% &ctrophies to summon (you have &f%have%&c)."
+  summon-cost-deducted: "&a%cost% trophies deducted for summon."
+  # admin trophies messages
+  trophies-set: "&aSet %player%'s trophies to &f%amount%&a."
+  trophies-updated: "&aYour trophies have been set to &f%amount%&a."
+  target-not-in-clan: "&cThat player is not in a clan."
+
+  # offline kick
+  player-not-found: "&cPlayer not found."
+  kicked-offline: "&aKicked &e%player% &afrom the clan."
+
+  # leader quit disband
+  leader-quit-disband: "&cClan disbanded because the leader left the clan."
