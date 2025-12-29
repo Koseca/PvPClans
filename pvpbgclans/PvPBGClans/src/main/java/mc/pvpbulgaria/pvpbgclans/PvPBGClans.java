@@ -11,6 +11,7 @@ import mc.pvpbulgaria.pvpbgclans.gui.ChatPromptManager;
 import mc.pvpbulgaria.pvpbgclans.gui.GuiListener;
 import mc.pvpbulgaria.pvpbgclans.gui.MenuManager;
 
+import mc.pvpbulgaria.pvpbgclans.kothclans.KothClansPvP;
 import mc.pvpbulgaria.pvpbgclans.listeners.*;
 import mc.pvpbulgaria.pvpbgclans.placeholders.ClansPlaceholders;
 import mc.pvpbulgaria.pvpbgclans.listeners.EssentialsClanPlaceholderListener;
@@ -69,6 +70,7 @@ public final class PvPBGClans extends JavaPlugin {
 
         // Managers
         this.clanManager = new ClanManager(this);
+        new KothClansPvP(this);
         this.clanManager.loadAll();
 
         this.joinCooldowns = new JoinCooldownManager(this);
@@ -94,7 +96,6 @@ public final class PvPBGClans extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new ClanFriendlyFireListener(this), this);
         Bukkit.getPluginManager().registerEvents(new BaseTeleportMoveListener(this), this);
         Bukkit.getPluginManager().registerEvents(new ClanSummonMoveListener(this), this);
-        // Replace {CLAN} in Essentials format with level-based prefix (if used)
         Bukkit.getPluginManager().registerEvents(new EssentialsClanPlaceholderListener(this), this);
 
         // PlaceholderAPI
